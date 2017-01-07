@@ -1,6 +1,6 @@
 $( document ).ready(function() {
     console.log( "document loaded" );
-    $("#contents").load('/code/php/fetchdata.php');
+    $("#contents").load('php/fetchdata.php');
 });
 
 

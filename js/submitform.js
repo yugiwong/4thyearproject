@@ -1,7 +1,12 @@
 $( document ).ready(function() {
-    console.log( "document loaded" );
-    $("#contents").load('/code/php/fetchdata.php');
+	console.log("before");
+    $("#contents").load('php/fetchdata.php');
+    $("#buttontest").click(function() {
+    	$(this).hide();
+    });
+    console.log("after");
 });
+
 
 
 // $("#contactForm").validator().on("submit", function (event) {
