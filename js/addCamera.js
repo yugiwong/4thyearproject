@@ -1,5 +1,9 @@
 $( document ).ready(function() {
     console.log( "document loaded" );
+<<<<<<< HEAD
+=======
+    $("#contents").load('/php/fetchdata.php');
+>>>>>>> master
 });
 
 
