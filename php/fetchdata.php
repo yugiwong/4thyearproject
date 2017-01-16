@@ -19,7 +19,7 @@ $count = 0;
 if ($result->num_rows > 0) {
      // output data of each row
      while($row = $result->fetch_assoc()) {
-         echo "<br> Nickname: ". $row["Nickname"]. " IPaddress: ". $row["IPaddress"]. " username " . $row["username"] . " password " . $row["password"] . $row["Description"]. "Description" . "<br>";
+         echo "<br> Nickname: ". $row["Nickname"]. " IPaddress: ". $row["IPaddress"]. " username " . $row["username"] . " password " . $row["password"] . "Description " . $row["Description"] . "<br>";
          
          //store values in array that html below can use
          $data[$count] = array($row["Nickname"],$row["IPaddress"],$row["username"],$row["password"],$row["Description"]);
@@ -31,6 +31,7 @@ if ($result->num_rows > 0) {
 }
 
 $conn->close();
+
 ?>  
 
 
@@ -40,21 +41,24 @@ $conn->close();
   	<div class="col-sm-6 col-md-4">
 	  <? foreach($data as $element) { ?>
 	    <div class="thumbnail">
-	      <img src="https://images7.alphacoders.com/697/thumb-1920-697788.png" alt="twins">
+	      <img src="img/camera.jpg">
 	      <div class="caption">
 	        <h3><? echo $element[0] ?></h3>
 	        <p><? echo $element[4] ?></p>
-	        <p><a href="#" class="btn btn-primary" role="button" id="buttontest">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+              <form id="delete" method="post" action="php/removedata.php">
+                  <input type="hidden" name="delete_rec_id" value="<?php print $element[1]; ?>"/> 
+                  <input type="submit" name="delete" value="Remove Feed"/>    
+              </form>
 	      </div>
 	    </div>
 	  <? } ?>
 
     <div class="thumbnail">
-      <img src="http://static.zerochan.net/Re%3AZero.Kara.Hajimeru.Isekai.Seikatsu.full.2005784.jpg" alt="new feed">
+    <a href="addFeed.html">
+      <img src="img/plus.png" alt="new feed">
+      </a>
       <div class="caption">
-        <h3>Thumbnail label</h3>
-        <p>yayy stuff</p>
-        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        <h3>Add feed</h3>
       </div>
     </div>
 
@@ -62,4 +66,5 @@ $conn->close();
   </div>
 
 </body>
+<script type="text/javascript" src="js/thumbnailManagement.js"></script>
 </html>

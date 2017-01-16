@@ -11,26 +11,15 @@ if ($conn->connect_error) {
      die("Connection failed: " . $conn->connect_error);
 } 
 
-$sql = "INSERT INTO camera (Nickname, IPaddress, username, password)
-VALUES ('$_POST[Nickname]', '$_POST[IPaddress]', '$_POST[username]', '$_POST[password]')";
+$sql = "INSERT INTO camera (Nickname, IPaddress, username, password, Description)
+VALUES ('$_POST[Nickname]', '$_POST[IPaddress]', '$_POST[username]', '$_POST[password]', '$_POST[Description]')";
 
-if ($conn->query($sql) === TRUE) {
-    echo "New record entered successfully";
-} else {
+if ($conn->query($sql) === FALSE) {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
-// $sql = "SELECT id, firstname, lastname FROM MyGuests";
-// $result = $conn->query($sql);
+$conn->close();    
 
-// if ($result->num_rows > 0) {
-//      // output data of each row
-//      while($row = $result->fetch_assoc()) {
-//          echo "<br> id: ". $row["id"]. " - Name: ". $row["firstname"]. " " . $row["lastname"] . "<br>";
-//      }
-// } else {
-//      echo "0 results";
-// }
-
-$conn->close();
+header("Location: /index.html");
+exit();
 ?>  
