@@ -46,12 +46,13 @@ $conn->close();
 <body>
   <div class="row">
 	  <? foreach($data as $element) { ?>
-      <div class="col-sm-6 col-md-4">
+      <div class="col-sm-6 col-md-4" style="padding-left: 30px; padding-right: 30px">
   	    <div class="thumbnail">
-  	      <img src="/img/camera.jpg">
-          <!-- <embed src="http://192.168.1.234:8080/stream" width="600" height="400" scale="aspect" controller="true"> -->
+         <h4><? echo $element[0] ?></h4>
+  	      <!-- <img src="/img/camera.jpg"> -->
+          <embed src="http://spyonleslie.ddns.net:<? echo $element[1] ?>/stream" width="300" height="270" scale="aspect" controller="true"> 
   	      <div class="caption">
-  	        <h3><? echo $element[0] ?></h3>
+  	        
   	        <p><? echo $element[4] ?></p>
               <form id="delete" method="post" action="/php/removedata.php">
                 <input type="hidden" name="delete_rec_id" value="<?php print $element[1]; ?>"/> 
@@ -61,15 +62,6 @@ $conn->close();
   	    </div>
       </div>
 	  <? } ?>
-
-    <div class="col-sm-6 col-md-4">
-      <div class="thumbnail">
-        <a href="/addFeed.html"> <img src="/img/plus.png" alt="new feed" width="300" height="300"> </a>
-        <div class="caption">
-          <h3>Add feed</h3>
-        </div>
-      </div>
-    </div>
   </div>
 </body>
 </html>
