@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/stylesheet.css">
 </head>
 <body>
 
@@ -16,13 +17,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span> 
       </button>
-      <a class="navbar-brand" href="/index.php">IP camera network</a>
+
+      <a class="pull-left" href="/index.php"><img id="logo" src="/img/logo.png" width="65"></a>
+      <a class="navbar-brand" href="/index.php">The Third Eye</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li><a href="/index.php">Live view</a></li>
         <li><a href="/addFeed.php">Add Feed</a></li>
-        <li><a href="#">Recordings</a></li>
+        <li><a href="/recordings.php">Recordings</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/register.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -32,3 +35,6 @@
     </div>
   </div>
 </nav>
+
+</body>
+</html>

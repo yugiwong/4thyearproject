@@ -20,13 +20,17 @@ include(__DIR__."/php/navbar.php");
   
 <div class="container">
     <form action="/php/setdata.php" method="post">
-    Email:<br>
-    <input type="text" name="Email"><br>
-    Password:<br>
+    <p>Username:</p>
+    <input type="text" name="Username"><br>
+    <p>Password:</p>
     <input type="text" name="Password"><br><br>    
 
     <input type="submit" value="Log in">
 </div>
+
+<?php
+include(__DIR__."/php/footer.php");
+?>
 
 </body>
 
