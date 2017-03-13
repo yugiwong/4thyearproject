@@ -21,6 +21,8 @@ include(__DIR__."/php/navbar.php");
     <input type="text" name="Nickname"><br>
     <p>IP Address:</p>
     <input type="text" name="IPaddress"><br>
+    <p>Port number:</p>
+    <input type="text" name="Port"><br>    
     <p>Username:</p>
     <input type="text" name="username"><br>
     <p>Password:</p>
