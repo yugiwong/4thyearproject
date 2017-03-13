@@ -11,12 +11,24 @@ if ($conn->connect_error) {
      die("Connection failed: " . $conn->connect_error);
 } 
 
-$sql = "INSERT INTO camera (Nickname, IPaddress, username, password, Description)
-VALUES ('$_POST[Nickname]', '$_POST[IPaddress]', '$_POST[username]', '$_POST[password]', '$_POST[Description]')";
+$Nickname = $_POST[Nickname];
+$IPaddress = $_POST[IPaddress];
+$Port = $_POST[Port];
+$Username = $_POST[username];
+$Password = $_POST[password];
+$Description = $_POST[Description];
 
-if ($conn->query($sql) === FALSE) {
+$stmt = $conn->prepare("INSERT INTO camera (Nickname, IPaddress, Port, username, password, Description) VALUES (?,?,?,?,?,?)");
+
+if ($conn->query($stmt) === FALSE) {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
+
+$stmt->bind_param("ssssss", $Nickname, $IPaddress, $Port, $Username, $Password, $Description);
+
+$stmt->execute();
+
+$stmt->close();
 
 $conn->close();    
 

@@ -12,12 +12,21 @@ if ($conn->connect_error) {
 } 
 
 if(isset($_POST['delete'])){
-   $id = $_POST['delete_rec_id'];  
-   $sql = "DELETE from camera WHERE IPaddress='$id'"; 
-   $result = $conn->query($sql);
+	$IPaddress = $_GET[IPaddress];
+	$Port = $_GET[Port];
+
+   $stmt = $conn->prepare("DELETE from camera WHERE IPaddress=? AND Port=?");
+
+   $stmt->bind_param("ss", $IPaddress, $Port);
+
+   $stmt->execute();
+
+   $stmt->close();
+
+   //$result = $conn->query($sql);
 }
 
-if ($conn->query($sql) === FALSE) {
+if ($conn->query($stmt) === FALSE) {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
 

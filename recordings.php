@@ -16,9 +16,9 @@ if ($conn->connect_error) {
 if ($_SESSION["username"]!=NULL && $_SESSION["password"]!=NULL) {
   $user = $_SESSION["username"];
   $pass = $_SESSION["password"];
-  $sql = "SELECT Nickname, IPaddress, username, password, Description FROM camera WHERE username='$user' AND password='$pass'";
+  $sql = "SELECT Nickname, IPaddress, Port, username, password, Description FROM camera WHERE username='$user' AND password='$pass'";
 } else {
-  $sql = "SELECT Nickname, IPaddress, username, password, Description FROM camera";
+  $sql = "SELECT Nickname, IPaddress, Port, username, password, Description FROM camera";
 }
 
 $result = $conn->query($sql);
@@ -29,7 +29,7 @@ if ($result->num_rows > 0) {
      // output data of each row
      while($row = $result->fetch_assoc()) {         
          //store values in array that html below can use
-         $data[$count] = array($row["Nickname"],$row["IPaddress"],$row["username"],$row["password"],$row["Description"]);
+         $data[$count] = array($row["Nickname"],$row["IPaddress"],$row["Port"],$row["username"],$row["password"],$row["Description"]);
 
          $count = $count+1; 
      }
@@ -53,7 +53,7 @@ include(__DIR__."/php/navbar.php");
       <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
          <h4><? echo $element[0] ?></h4>
-          <embed src="http://spyonleslie.ddns.net:8000/Videos" width="300" height="270" scale="aspect" controller="true"> 
+          <embed src="http://<? echo $element[1] ?>:8000/Videos" width="300" height="270" scale="aspect" controller="true"> 
           <div class="caption"> </div>
         </div>
       </div>
